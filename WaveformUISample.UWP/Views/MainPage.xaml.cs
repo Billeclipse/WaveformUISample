@@ -23,10 +23,11 @@ namespace WaveformUISample.UWP.Views
     public sealed partial class MainPage : INotifyPropertyChanged
     {
         private const string RecordingsConst = "Recordings";
-        private const string PlayRecordIconSourceConst = "ms-appx:///Assets/play-48.png";
-        private const string PauseRecordIconSourceConst = "ms-appx:///Assets/pause-48.png";
-        private const string GithubIconSourceConst = "ms-appx:///Assets/github_icon.png";
-        private readonly string _soundBarDefaultColor = Colors.LightGray.ToString();
+        private const string PlayRecordIconSourceConst = "ms-appx:///Assets/MainPage/play-48.png";
+        private const string PauseRecordIconSourceConst = "ms-appx:///Assets/MainPage/pause-48.png";
+        private const string GithubIconSourceConst = "ms-appx:///Assets/MainPage/github_icon.png";
+        private const string LogoIconSourceConst = "ms-appx:///Assets/StoreLogo.scale-100.png";
+        private readonly string _soundBarDefaultColor = Colors.ForestGreen.ToString();
 
         private readonly WaveformService _waveformService = new WaveformService();
         private StorageFile _file;
@@ -118,29 +119,7 @@ namespace WaveformUISample.UWP.Views
                 OnPropertyChanged();
             }
         }
-
-        private bool _recordingFailShow;
-        public bool RecordingFailShow
-        {
-            get => _recordingFailShow;
-            set
-            {
-                _recordingFailShow = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool _recordingSuccessShow;
-        public bool RecordingSuccessShow
-        {
-            get => _recordingSuccessShow;
-            set
-            {
-                _recordingSuccessShow = value;
-                OnPropertyChanged();
-            }
-        }
-
+        
         private string _playRecordIconSource;
         public string PlayRecordIconSource
         {
@@ -170,6 +149,17 @@ namespace WaveformUISample.UWP.Views
             set
             {
                 _githubIconSource = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _logoIconSource;
+        public string LogoIconSource
+        {
+            get => _logoIconSource;
+            set
+            {
+                _logoIconSource = value;
                 OnPropertyChanged();
             }
         }
@@ -235,6 +225,7 @@ namespace WaveformUISample.UWP.Views
             PlayRecordIconSource = PlayRecordIconSourceConst;
             PauseRecordIconSource = PauseRecordIconSourceConst;
             GithubIconSource = GithubIconSourceConst;
+            LogoIconSource = LogoIconSourceConst;
         }
         
         private async void Initialize()

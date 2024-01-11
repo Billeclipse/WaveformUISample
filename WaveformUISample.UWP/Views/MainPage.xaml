@@ -12,7 +12,10 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel HorizontalAlignment="Center" Margin="0,50,0,100">
-                <TextBlock Text="Waveform UI Sample" FontSize="40"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <BitmapIcon UriSource="{x:Bind LogoIconSource}" HorizontalAlignment="Center" Margin="0,5,5,0"/>
+                    <TextBlock Text="Waveform UI Sample" FontSize="40"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="by Vasilios Giogourtsoglou" FontSize="20" Margin="0,0,10,0"/>
                     <HyperlinkButton NavigateUri="https://github.com/Billeclipse" HorizontalAlignment="Center" CornerRadius="20" Width="30" Height="30" Padding="1">

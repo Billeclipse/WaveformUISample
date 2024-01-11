@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="4ead615e-feee-47e1-9f14-140c3e55cff8" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>WaveformUISample.UWP</DisplayName>
+    <DisplayName>WaveformUISample</DisplayName>
     <PublisherDisplayName>Billy</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,13 +32,14 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="WaveformUISample.UWP.App">
       <uap:VisualElements
-        DisplayName="WaveformUISample.UWP"
+        DisplayName="WaveformUISample"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="WaveformUISample.UWP"
+        Description="WaveformUISample by Vasilios Giogourtsoglou"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badgeAndTileText"/>
       </uap:VisualElements>
     </Application>
   </Applications>
