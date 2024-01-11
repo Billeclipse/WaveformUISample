@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="WaveformUISample.UWP.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WaveformUISample.UWP.Views.Controls"
+    xmlns:views="using:WaveformUISample.UWP.Views"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DataContext="{d:DesignInstance views:MainPage}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Center" Margin="0,50,0,100">
+                <TextBlock Text="Waveform UI Sample" FontSize="40"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="by Vasilios Giogourtsoglou" FontSize="20" Margin="0,0,10,0"/>
+                    <HyperlinkButton NavigateUri="https://github.com/Billeclipse" HorizontalAlignment="Center" CornerRadius="20" Width="30" Height="30" Padding="1">
+                        <BitmapIcon UriSource="{x:Bind GithubIconSource}" HorizontalAlignment="Center" Width="26" Height="26"/>
+                    </HyperlinkButton>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,50">
+                    <TextBlock Text="Pick a sample: "/>
+                    <ComboBox ItemsSource="{x:Bind Samples, Mode=OneWay}"
+                          SelectedItem="{x:Bind SelectedSample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          Height="33" Width="260" Margin="0,0,20,10" HorizontalAlignment="Center"
+                          PlaceholderText="{x:Bind SelectedSample, Mode=OneWay}" 
+                          BorderThickness="0" FontSize ="16" Background="Transparent">
+                    </ComboBox>
+                    <Button HorizontalAlignment="Center" Click="WaveformTest_Click" Margin="0,0,20,0">Generate</Button>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,10,0" >
+                    <StackPanel Visibility="{x:Bind WaveformShow, Mode=OneWay}">
+                        <controls:Waveform PeakList="{x:Bind PeakList, Mode=OneWay}" Height="80" Width="800" PointerPressed="Waveform_OnPointerPressed" PointerReleased="Waveform_OnPointerReleased" PointerMoved="Waveform_OnPointerMoved"/>
+                        <controls:Waveform PeakList="{x:Bind PeakList, Mode=OneWay}" BarColor="{x:Bind SoundBarColor, Mode=OneWay}" Height="80" Width="{x:Bind SoundPosition, Mode=OneWay}" HorizontalAlignment="Left" Margin="0,-80,0,0" PointerPressed="Waveform_OnPointerPressed" PointerReleased="Waveform_OnPointerReleased" PointerMoved="Waveform_OnPointerMoved"/>
+                        <TextBlock HorizontalAlignment="Right" FontSize="10" Text="NAudio Waveform"/>
+                    </StackPanel>
+                    <StackPanel Visibility="{x:Bind Waveform2Show, Mode=OneWay}">
+                        <controls:Waveform PeakList="{x:Bind PeakList2, Mode=OneWay}" Height="80" Width="800" PointerPressed="Waveform_OnPointerPressed" PointerReleased="Waveform_OnPointerReleased" PointerMoved="Waveform_OnPointerMoved"/>
+                        <controls:Waveform PeakList="{x:Bind PeakList2, Mode=OneWay}" BarColor="{x:Bind SoundBarColor, Mode=OneWay}" Height="80" Width="{x:Bind SoundPosition, Mode=OneWay}" HorizontalAlignment="Left" Margin="0,-80,0,0" PointerPressed="Waveform_OnPointerPressed" PointerReleased="Waveform_OnPointerReleased" PointerMoved="Waveform_OnPointerMoved"/>
+                        <TextBlock HorizontalAlignment="Right" FontSize="10" Text="ManagedBass Waveform"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Margin="0,15,10,0" Visibility="{x:Bind RecordingShow, Mode=OneWay}">
+                    <StackPanel Margin="10,0,0,10">
+                        <Button Visibility="{x:Bind IsRecordingNotPlaying, Mode=OneWay}" Click="StartPlayingRecording_Click" Width="50" Height="50">
+                            <BitmapIcon UriSource="{x:Bind PlayRecordIconSource}" HorizontalAlignment="Center" Width="30" Height="30"/>
+                        </Button>
+                        <Button Visibility="{x:Bind IsRecordingPlaying, Mode=OneWay}" Click="PausePlayingRecord_OnClick" Width="50" Height="50">
+                            <BitmapIcon UriSource="{x:Bind PauseRecordIconSource}" HorizontalAlignment="Center" Width="30" Height="30"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="{x:Bind SoundPositionString, Mode=OneWay}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
